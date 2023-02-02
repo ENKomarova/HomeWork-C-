@@ -1,78 +1,79 @@
-﻿/* Задача 1
-Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-14212 -> нет
-12821 -> да
-23432 -> да
-bool Palindrome(int num)
-{
-    int refNum = 0;
+﻿/* Задача 1.
+Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
 
-    int newnum = num;
-    while (num > 0)
-    {
-        refNum = refNum * 10 + num % 10 ;
-        num = num / 10;
-    }
-    return refNum == newnum;
+int Funkt(int numA, int numB)
+{
+    int result = 1;
+for(int current = 1; current <= numB; current++)
+{
+result = result * numA;
 }
-Console.Write ("Введите число N: ");
-int numN = Convert.ToInt32(Console.ReadLine());
-if (Palindrome(numN))
-Console.WriteLine($"Число {numN} является палиндромом");
-else Console.WriteLine($"Число {numN} не является палиндромом");
+return result;
+}
+Console.Write("Введите число А: ");
+int numA = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число B: ");
+int numB = Convert.ToInt32(Console.ReadLine());
+int GetFunkt = Funkt(numA, numB);
+Console.WriteLine($"вывод числа {numA} в степень {numB} будет {GetFunkt}");
 */
 
+/* Задача 2.
+ Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+452 -> 11
+82 -> 10
+9012 -> 12
 
-/* Задача 2
-Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-A (3,6,8); B (2,1,-7), -> 15.84
-A (7,-5, 0); B (1,-1,9) -> 11.53
-
-double model (double xPos1, double yPos1,double zPos1, double xPos2, double yPos2, double zPos2)
+int SumNumber (int numberN)
 {
-return Math.Sqrt(Math.Pow(xPos1 - xPos2,2) +  Math.Pow(yPos1 - yPos2,2) + Math.Pow(zPos1 - zPos2,2));
+    int length = Convert.ToString(numberN).Length;
+    int a = 0;
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        a = numberN - numberN % 10;
+        sum = sum + (numberN - a);
+        numberN = numberN / 10;
+    }
+    return sum;
 }
-
-Console.Write("Введите координату точки х1: ");
-double x1 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите координату точки y1: ");
-double y1 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите координату точки z1: ");
-double z1 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите координату точки х2: ");
-double x2 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите координату точки y2: ");
-double y2 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите координату точки z2: ");
-double z2 = Convert.ToDouble(Console.ReadLine());
-
-Console.WriteLine(model(x1, y1, z1, x2, y2, z2));
+Console.Write("input a number:  ");
+int numN = Convert.ToInt32(Console.ReadLine());
+int sumNumber = SumNumber(numN);
+Console.WriteLine($"Сумма цифр числа {numN} равна {sumNumber}");
 */
 
+/* Задача 3.
+Напишите программу, которая задаёт массив из m элементов и выводит их на экран.
+1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+6, 1, 33 -> [6, 1, 33]
 
-/*Задача 3
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-3 -> 1, 8, 27
-5 -> 1, 8, 27, 64, 125
-
-void Cube (int N)
+int[] CreateArray(int size)
 {
-    int count = 1;
-    while (count <= N)
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
     {
-    int cub = count * count * count;
-    count++;
-    Console.WriteLine(cub);
+        Console.Write($"Num {i + 1} : ");
+        array[i] = Convert.ToInt32(Console.ReadLine());
     }
+    Console.WriteLine();
+    return array;
 }
-Console.Write("Введите число N:  ");
-int numN = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"Таблица кубов от 1 до {numN}");
-Cube(numN);
-
+void ShowArray(int[] array)
+{
+    Console.Write("[");
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (i != array.Length-1) Console.Write($"{array[i]},");
+        else Console.Write($"{array[i]}]");
+    }
+    Console.WriteLine();
+}
+Console.Write("Введите размер массива = ");
+int size = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Введите элементы массива {size} : ");
+int[] array = CreateArray(size);
+ShowArray(array);
 */
